@@ -3,7 +3,9 @@
 import { useState, useEffect, useCallback } from "react";
 import { PHASES } from "../lib/constants";
 import { connectWallet, checkConnection } from "../lib/contractInteraction";
+import useScrollReveal from "../lib/useScrollReveal";
 import ParticleBackground from "../components/ParticleBackground";
+import MouseGlow from "../components/MouseGlow";
 import Sidebar from "../components/Sidebar";
 import Header from "../components/Header";
 import Overview from "../components/Overview";
@@ -89,6 +91,9 @@ export default function Home() {
     setAppState((prev) => ({ ...prev, ...updates }));
   }, []);
 
+  // Scroll reveal animations
+  useScrollReveal();
+
   // Render current phase content
   const renderPhase = () => {
     const commonProps = {
@@ -122,6 +127,7 @@ export default function Home() {
   return (
     <>
       <ParticleBackground />
+      <MouseGlow />
       <div className="app-layout">
         <Sidebar
           currentPhase={currentPhase}
@@ -135,10 +141,11 @@ export default function Home() {
             currentPhase={currentPhase}
             wallet={wallet}
           />
-          <div className="phase-content">{renderPhase()}</div>
+          <div className="phase-content" key={currentPhase}>{renderPhase()}</div>
         </main>
       </div>
       <ToastContainer toasts={toasts} />
     </>
   );
 }
+
