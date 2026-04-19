@@ -25,7 +25,7 @@ export default function Header({ currentPhase, wallet }) {
         {wallet && (
           <div className="chain-status">
             <span className="chain-dot" />
-            Hardhat Local · {formatAddress(wallet.address)}
+            Ganache · {formatAddress(wallet.address)}
           </div>
         )}
       </div>

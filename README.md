@@ -5,7 +5,7 @@
 ![Solidity](https://img.shields.io/badge/Solidity-^0.8.24-363636?logo=solidity)
 ![Next.js](https://img.shields.io/badge/Next.js-14-000000?logo=next.js)
 ![Ethers.js](https://img.shields.io/badge/Ethers.js-v6-3C3C3D?logo=ethereum)
-![Hardhat](https://img.shields.io/badge/Hardhat-2.22-FFF100?logo=ethereum)
+![Ganache](https://img.shields.io/badge/Ganache-Local_Blockchain-E4A663)
 
 ## 📖 About
 
@@ -25,7 +25,7 @@ This DApp demonstrates a complete **User-Centric Identity Management (UcIDM)** a
 ```
 ├── contracts/          # Solidity smart contracts
 │   └── UcIDM.sol       # Main identity management contract
-├── scripts/            # Hardhat deployment scripts
+├── scripts/            # Deployment scripts
 │   └── deploy.js       # Deploy & initialize system
 ├── app/                # Next.js App Router
 │   ├── layout.js       # Root layout with metadata
@@ -42,59 +42,78 @@ This DApp demonstrates a complete **User-Centric Identity Management (UcIDM)** a
 │   ├── constants.js    # ABI, config, phase metadata
 │   ├── cryptoUtils.js  # Web Crypto API utilities
 │   └── contractInteraction.js  # Ethers.js contract layer
-└── hardhat.config.js   # Hardhat configuration
+└── hardhat.config.js   # Hardhat configuration (Ganache)
 ```
 
 ## 🚀 Getting Started
 
 ### Prerequisites
 
-- Node.js 18+
-- MetaMask browser extension
+- **Node.js** 18+
+- **Ganache** — Download from [trufflesuite.com/ganache](https://trufflesuite.com/ganache/) or use Ganache CLI
+- **MetaMask** browser extension
 
 ### Installation
 
 ```bash
-# Install dependencies
+# 1. Clone the repo
+git clone https://github.com/dolly-balwani/DApp-digital-identity-management.git
+cd DApp-digital-identity-management
+
+# 2. Install dependencies
 npm install
 
-# Compile smart contract
+# 3. Compile smart contract
 npx hardhat compile
+```
 
-# Start local blockchain
-npx hardhat node
+### Running with Ganache
 
-# In a new terminal — deploy contract
-npx hardhat run scripts/deploy.js --network localhost
+```bash
+# Step 1: Open Ganache
+# - Launch Ganache GUI and create a workspace (or use Ganache CLI: ganache-cli)
+# - Default RPC: http://127.0.0.1:7545
+# - Chain ID: 1337
 
-# In a new terminal — start frontend
+# Step 2: Deploy the smart contract to Ganache
+npm run deploy
+
+# Step 3: Start the frontend
 npm run dev
 ```
 
-### MetaMask Setup (Local)
+### MetaMask Setup
 
-1. Open MetaMask → Add Network
-2. **Network Name:** Hardhat Local
-3. **RPC URL:** http://127.0.0.1:8545
-4. **Chain ID:** 31337
-5. **Currency Symbol:** ETH
-6. Import a test account using a private key from the Hardhat node output
+1. Open MetaMask → **Settings → Networks → Add Network**
+2. Fill in:
+   - **Network Name:** Ganache
+   - **RPC URL:** `http://127.0.0.1:7545`
+   - **Chain ID:** `1337`
+   - **Currency Symbol:** `ETH`
+3. **Import Account:** Copy a private key from Ganache's account list and import it into MetaMask
+
+### Demo Mode
+
+The DApp works **without MetaMask or Ganache** in demo mode. All blockchain operations are simulated in the browser so you can explore the full identity lifecycle.
 
 ## 🛠️ Tech Stack
 
-- **Smart Contract:** Solidity ^0.8.24
-- **Development Framework:** Hardhat
-- **Frontend:** Next.js 14 (App Router)
-- **Blockchain Interaction:** Ethers.js v6
-- **Wallet:** MetaMask
-- **Cryptography:** Web Crypto API (ECDSA, SHA-256)
-- **ZKP Simulation:** Groth16-style proof objects
+| Layer | Technology |
+|-------|-----------|
+| **Smart Contract** | Solidity ^0.8.24 |
+| **Local Blockchain** | Ganache |
+| **Development** | Hardhat |
+| **Frontend** | Next.js 14 (App Router) |
+| **Blockchain Interaction** | Ethers.js v6 |
+| **Wallet** | MetaMask |
+| **Cryptography** | Web Crypto API (ECDSA, SHA-256) |
+| **ZKP Simulation** | Groth16-style proof objects |
 
 ## 📄 Research Paper
 
 Based on the case study: *"Privacy-Preserving Identity Verification for 6G Autonomous Transport using Blockchain and ZKP"*
 
-This demonstrates how blockchain-based user-centric identity systems, combined with zero-knowledge proofs, enable secure, decentralized, and privacy-preserving access to 6G services.
+This demonstrates how blockchain-based user-centric identity systems, combined with zero-knowledge proofs, enable secure, decentralized, and privacy-preserving access to 6G services. It eliminates reliance on centralized identity providers while ensuring trust, scalability, and data confidentiality.
 
 ## 📜 License
 
