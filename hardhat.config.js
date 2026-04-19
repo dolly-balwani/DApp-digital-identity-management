@@ -12,15 +12,12 @@ module.exports = {
     }
   },
   networks: {
-    // Ganache local blockchain (default: port 7545, chain ID 1337)
-    ganache: {
-      url: "http://127.0.0.1:7545",
-      chainId: 1337
+    hardhat: {
+      chainId: 31337
     },
-    // Also support localhost for flexibility
     localhost: {
-      url: "http://127.0.0.1:7545",
-      chainId: 1337
+      url: "http://127.0.0.1:8545",
+      chainId: 31337
     }
   },
   paths: {

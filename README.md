@@ -5,7 +5,7 @@
 ![Solidity](https://img.shields.io/badge/Solidity-^0.8.24-363636?logo=solidity)
 ![Next.js](https://img.shields.io/badge/Next.js-14-000000?logo=next.js)
 ![Ethers.js](https://img.shields.io/badge/Ethers.js-v6-3C3C3D?logo=ethereum)
-![Ganache](https://img.shields.io/badge/Ganache-Local_Blockchain-E4A663)
+![Hardhat](https://img.shields.io/badge/Hardhat-2.22-FFF100?logo=ethereum)
 
 ## 📖 About
 
@@ -42,7 +42,7 @@ This DApp demonstrates a complete **User-Centric Identity Management (UcIDM)** a
 │   ├── constants.js    # ABI, config, phase metadata
 │   ├── cryptoUtils.js  # Web Crypto API utilities
 │   └── contractInteraction.js  # Ethers.js contract layer
-└── hardhat.config.js   # Hardhat configuration (Ganache)
+└── hardhat.config.js   # Hardhat configuration
 ```
 
 ## 🚀 Getting Started
@@ -50,7 +50,6 @@ This DApp demonstrates a complete **User-Centric Identity Management (UcIDM)** a
 ### Prerequisites
 
 - **Node.js** 18+
-- **Ganache** — Download from [trufflesuite.com/ganache](https://trufflesuite.com/ganache/) or use Ganache CLI
 - **MetaMask** browser extension
 
 ### Installation
@@ -67,18 +66,22 @@ npm install
 npx hardhat compile
 ```
 
-### Running with Ganache
+### Running the DApp
+
+Open **3 terminals**:
 
 ```bash
-# Step 1: Open Ganache
-# - Launch Ganache GUI and create a workspace (or use Ganache CLI: ganache-cli)
-# - Default RPC: http://127.0.0.1:7545
-# - Chain ID: 1337
+# Terminal 1 — Start Hardhat local blockchain
+npx hardhat node
+```
 
-# Step 2: Deploy the smart contract to Ganache
+```bash
+# Terminal 2 — Deploy the smart contract
 npm run deploy
+```
 
-# Step 3: Start the frontend
+```bash
+# Terminal 3 — Start the frontend
 npm run dev
 ```
 
@@ -86,22 +89,23 @@ npm run dev
 
 1. Open MetaMask → **Settings → Networks → Add Network**
 2. Fill in:
-   - **Network Name:** Ganache
-   - **RPC URL:** `http://127.0.0.1:7545`
-   - **Chain ID:** `1337`
+   - **Network Name:** Hardhat Local
+   - **RPC URL:** `http://127.0.0.1:8545`
+   - **Chain ID:** `31337`
    - **Currency Symbol:** `ETH`
-3. **Import Account:** Copy a private key from Ganache's account list and import it into MetaMask
+3. **Import Account:** Copy a private key from the `npx hardhat node` terminal output and import it into MetaMask
+4. Connect MetaMask to the DApp by clicking "Connect MetaMask" in the sidebar
 
 ### Demo Mode
 
-The DApp works **without MetaMask or Ganache** in demo mode. All blockchain operations are simulated in the browser so you can explore the full identity lifecycle.
+The DApp also works **without MetaMask** in demo mode — all blockchain operations are simulated in the browser so you can explore the full identity lifecycle.
 
 ## 🛠️ Tech Stack
 
 | Layer | Technology |
 |-------|-----------|
 | **Smart Contract** | Solidity ^0.8.24 |
-| **Local Blockchain** | Ganache |
+| **Local Blockchain** | Hardhat Node |
 | **Development** | Hardhat |
 | **Frontend** | Next.js 14 (App Router) |
 | **Blockchain Interaction** | Ethers.js v6 |
