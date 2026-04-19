@@ -4,9 +4,9 @@ import { PHASES } from "../lib/constants";
 
 export default function Overview({ onNavigate, completedPhases }) {
   return (
-    <div className="phase-content">
+    <div>
       {/* Hero Section */}
-      <div className="phase-hero scroll-reveal">
+      <div className="phase-hero">
         <h2 className="gradient-text" style={{ fontSize: "2.4rem", lineHeight: 1.15 }}>
           Blockchain-Based User-Centric Identity Management
         </h2>

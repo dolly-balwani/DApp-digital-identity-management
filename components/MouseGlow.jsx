@@ -3,37 +3,28 @@
 import { useEffect, useRef } from "react";
 
 export default function MouseGlow() {
-  const glowRef = useRef(null);
+  const ref = useRef(null);
 
   useEffect(() => {
-    const glow = glowRef.current;
-    if (!glow) return;
+    const el = ref.current;
+    if (!el) return;
+    let mx = 0, my = 0, gx = 0, gy = 0;
 
-    let mouseX = 0, mouseY = 0;
-    let glowX = 0, glowY = 0;
+    const move = (e) => { mx = e.clientX; my = e.clientY; };
 
-    const handleMouseMove = (e) => {
-      mouseX = e.clientX;
-      mouseY = e.clientY;
+    const tick = () => {
+      gx += (mx - gx) * 0.06;
+      gy += (my - gy) * 0.06;
+      el.style.left = gx + "px";
+      el.style.top = gy + "px";
+      requestAnimationFrame(tick);
     };
 
-    // Smooth lerp follow
-    const animate = () => {
-      glowX += (mouseX - glowX) * 0.08;
-      glowY += (mouseY - glowY) * 0.08;
-      glow.style.left = glowX + "px";
-      glow.style.top = glowY + "px";
-      requestAnimationFrame(animate);
-    };
+    addEventListener("mousemove", move);
+    requestAnimationFrame(tick);
 
-    window.addEventListener("mousemove", handleMouseMove);
-    const animId = requestAnimationFrame(animate);
-
-    return () => {
-      window.removeEventListener("mousemove", handleMouseMove);
-      cancelAnimationFrame(animId);
-    };
+    return () => removeEventListener("mousemove", move);
   }, []);
 
-  return <div ref={glowRef} className="mouse-glow" />;
+  return <div ref={ref} className="cursor-glow" />;
 }
