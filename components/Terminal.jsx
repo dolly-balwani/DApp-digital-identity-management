@@ -2,44 +2,28 @@
 
 import { useRef, useEffect } from "react";
 
-export default function Terminal({ logs = [], title = "System Terminal" }) {
-  const bodyRef = useRef(null);
+const ICONS = { success: "✓", error: "✗", warning: "⚠", system: "◆" };
 
-  useEffect(() => {
-    if (bodyRef.current) {
-      bodyRef.current.scrollTop = bodyRef.current.scrollHeight;
-    }
-  }, [logs]);
+export default function Terminal({ logs = [], title = "Terminal" }) {
+  const ref = useRef(null);
+  useEffect(() => { if (ref.current) ref.current.scrollTop = ref.current.scrollHeight; }, [logs]);
 
   return (
     <div className="terminal">
-      <div className="terminal-header">
-        <span className="terminal-dot red" />
-        <span className="terminal-dot yellow" />
-        <span className="terminal-dot green" />
+      <div className="terminal-bar">
+        <span className="terminal-dot r" />
+        <span className="terminal-dot y" />
+        <span className="terminal-dot g" />
         <span className="terminal-title">{title}</span>
       </div>
-      <div className="terminal-body" ref={bodyRef}>
+      <div className="terminal-body" ref={ref}>
         {logs.length === 0 && (
-          <div className="terminal-line info">
-            <span className="prefix">$</span>
-            <span>Waiting for operations...</span>
-          </div>
+          <div className="t-line info"><span className="t-pre">$</span><span>Waiting for operations...</span></div>
         )}
-        {logs.map((log, i) => (
-          <div key={i} className={`terminal-line ${log.type || "info"}`}>
-            <span className="prefix">
-              {log.type === "success"
-                ? "✓"
-                : log.type === "error"
-                ? "✗"
-                : log.type === "warning"
-                ? "⚠"
-                : log.type === "system"
-                ? "◆"
-                : "$"}
-            </span>
-            <span>{log.message}</span>
+        {logs.map((l, i) => (
+          <div key={i} className={`t-line ${l.type || "info"}`}>
+            <span className="t-pre">{ICONS[l.type] || "$"}</span>
+            <span>{l.message}</span>
           </div>
         ))}
       </div>

@@ -2,19 +2,11 @@
 
 export default function ToastContainer({ toasts }) {
   return (
-    <div className="toast-container">
-      {toasts.map((toast) => (
-        <div key={toast.id} className={`toast ${toast.type}`}>
-          <span>
-            {toast.type === "success"
-              ? "✅"
-              : toast.type === "error"
-              ? "❌"
-              : toast.type === "warning"
-              ? "⚠️"
-              : "ℹ️"}
-          </span>
-          <span>{toast.message}</span>
+    <div className="toasts">
+      {toasts.map((t) => (
+        <div key={t.id} className={`toast ${t.type}`}>
+          <span>{t.type === "success" ? "✅" : t.type === "error" ? "❌" : t.type === "warning" ? "⚠️" : "ℹ️"}</span>
+          <span>{t.message}</span>
         </div>
       ))}
     </div>

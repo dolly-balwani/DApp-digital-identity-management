@@ -1,20 +1,22 @@
 import "./globals.css";
 
 export const metadata = {
-  title: "UcIDM — Blockchain Identity Management for 6G",
+  title: "UcIDM — Blockchain Digital Identity Management DApp",
   description:
-    "Privacy-Preserving Identity Verification for 6G Autonomous Transport using Blockchain and Zero-Knowledge Proofs. A User-Centric Identity Management DApp.",
+    "Blockchain-Based User-Centric Identity Management DApp implementing Privacy-Preserving Identity Verification using Zero-Knowledge Proofs. Based on the research paper: Blockchain and the Future of Digital Identity Management (ScienceDirect, 2025).",
   keywords: [
     "blockchain",
-    "identity management",
+    "digital identity management",
+    "self-sovereign identity",
     "ZKP",
     "zero-knowledge proof",
-    "6G",
-    "autonomous transport",
+    "verifiable credentials",
     "DApp",
     "decentralized",
     "privacy",
     "smart contract",
+    "6G",
+    "autonomous transport",
   ],
 };
 

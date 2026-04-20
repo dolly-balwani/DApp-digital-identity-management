@@ -287,10 +287,12 @@ export default function Phase6({ wallet, appState, updateAppState, addToast, com
           </div>
           <div className="card-body">
             <p style={{ color: "var(--text-secondary)", fontSize: "0.88rem", lineHeight: 1.8 }}>
-              This case study demonstrates how <strong style={{ color: "var(--accent-cyan)" }}>blockchain-based user-centric identity systems</strong>,
-              combined with <strong style={{ color: "var(--accent-purple)" }}>zero-knowledge proofs</strong>, enable secure, decentralized, and privacy-preserving access
-              to 6G services. It eliminates reliance on centralized identity providers while ensuring
-              <strong style={{ color: "var(--accent-green)" }}> trust, scalability, and data confidentiality</strong>.
+              This implementation demonstrates how <strong style={{ color: "var(--accent-cyan)" }}>blockchain-based user-centric identity systems</strong>,
+              combined with <strong style={{ color: "var(--accent-purple)" }}>zero-knowledge proofs</strong>, enable secure, decentralized, and privacy-preserving
+              identity verification for next-generation services. Based on the research paper{" "}
+              <em>&quot;Blockchain and the Future of Digital Identity Management&quot;</em> (ScienceDirect, 2025),
+              this DApp eliminates reliance on centralized identity providers while ensuring{" "}
+              <strong style={{ color: "var(--accent-green)" }}>trust, scalability, and data confidentiality</strong>.
             </p>
           </div>
         </div>
