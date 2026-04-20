@@ -128,7 +128,7 @@ export default function Home() {
     <>
       <ParticleBackground />
       <MouseGlow />
-      <div className="app-layout">
+      <div className="app-shell">
         <Sidebar
           currentPhase={currentPhase}
           onPhaseChange={setCurrentPhase}
@@ -136,12 +136,12 @@ export default function Home() {
           wallet={wallet}
           onConnectWallet={handleConnectWallet}
         />
-        <main className="main-content">
+        <main className="main-area">
           <Header
             currentPhase={currentPhase}
             wallet={wallet}
           />
-          <div className="phase-content" key={currentPhase}>{renderPhase()}</div>
+          <div className="page page-enter" key={currentPhase}>{renderPhase()}</div>
         </main>
       </div>
       <ToastContainer toasts={toasts} />
